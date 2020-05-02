@@ -1,0 +1,28 @@
+{
+  "name": "hexo-chart",
+  "version": "1.0.0",
+  "description": "Render hexo poats, categories, and tags into charts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HCLonely/hexo-chart.git"
+  },
+  "keywords": [
+    "hexo",
+    "plugin",
+    "chart"
+  ],
+  "author": "HCLonely",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/HCLonely/hexo-chart/issues"
+  },
+  "homepage": "https://github.com/HCLonely/hexo-chart#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "moment": "^2.24.0"
+  }
+}
