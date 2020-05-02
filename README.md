@@ -25,4 +25,4 @@ npm install hexo-chart -S
 ![](https://github.com/HCLonely/hexo-charts/raw/master/screenshot/2020-05-02-201849.png)
 ![](https://github.com/HCLonely/hexo-charts/raw/master/screenshot/2020-05-02-201935.png)
 ## 许可协议
-Apache-2.0
+[Apache License 2.0](https://github.com/HCLonely/hexo-charts/blob/master/LICENSE)
