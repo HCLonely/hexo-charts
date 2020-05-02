@@ -1,5 +1,5 @@
 {
-  "name": "hexo-chart",
+  "name": "hexo-charts",
   "version": "1.0.0",
   "description": "Render hexo poats, categories, and tags into charts.",
   "main": "index.js",
