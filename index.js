@@ -24,11 +24,11 @@ hexo.extend.filter.register('after_render:html', function (locals) {
   }
 })
 
-function postsChart() {
+function postsChart () {
   const startDate = moment().subtract(1, 'years').startOf('month')
   const endDate = moment().endOf('month')
 
-  let monthMap = new Map()
+  const monthMap = new Map()
   const dayTime = 3600 * 24 * 1000
   for (let time = startDate; time <= endDate; time += dayTime) {
     const month = moment(time).format('YYYY-MM')
@@ -96,15 +96,15 @@ function postsChart() {
     </script>`
 }
 
-function tagsChart(dataLength = 10) {
-  let tagArr = []
+function tagsChart (dataLength = 10) {
+  const tagArr = []
   hexo.locals.get('tags').map(function (tag) {
     tagArr.push({ name: tag.name, value: tag.length })
   })
   tagArr.sort((a, b) => { return b.value - a.value })
 
-  let tagNameArr = []
-  let tagCountArr = []
+  const tagNameArr = []
+  const tagCountArr = []
   for (let i = 0, len = Math.min(tagArr.length, dataLength); i < len; i++) {
     tagNameArr.push(tagArr[i].name)
     tagCountArr.push(tagArr[i].value)
@@ -165,8 +165,8 @@ function tagsChart(dataLength = 10) {
     </script>`
 }
 
-function categoriesChart() {
-  let categoryArr = []
+function categoriesChart () {
+  const categoryArr = []
   hexo.locals.get('categories').map(function (category) {
     categoryArr.push({ name: category.name, value: category.length })
   })
