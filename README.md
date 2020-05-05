@@ -6,16 +6,16 @@ npm install hexo-chart -S
 ## 使用
 ### 文章发布统计图
 ```html
-<div id="#posts-chart"></div>
+<div id="posts-chart"></div>
 ```
 ### 标签统计图
 ```html
 <!-- "data-length"为显示标签个数(从多到少)，默认为10 -->
-<div id="#tags-chart" data-length="10"></div>
+<div id="tags-chart" data-length="10"></div>
 ```
 ### 文章分类统计图
 ```html
-<div id="#categories-chart"></div>
+<div id="categories-chart"></div>
 ```
 ## 说明
 如果出现文章中文目录乱码现象，请添加属性`data-encode="true"`.
