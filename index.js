@@ -6,19 +6,27 @@ hexo.extend.filter.register('after_render:html', function (locals) {
   const post = $('#posts-chart')
   const tag = $('#tags-chart')
   const category = $('#categories-chart')
+  let htmlEncode = false
 
   if (post.length > 0 || tag.length > 0 || category.length > 0) {
     $('head').after('<style type="text/css">#posts-chart,#categories-chart,#tags-chart{width: 100%;height: 300px;margin: 0.5rem auto;padding: 0.5rem;}</style><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>')
     if (post.length > 0) {
+      if (post.attr('data-encode') === 'true') htmlEncode = true
       post.after(postsChart())
     }
     if (tag.length > 0) {
+      if (tag.attr('data-encode') === 'true') htmlEncode = true
       tag.after(tagsChart(tag.attr('data-length')))
     }
     if (category.length > 0) {
+      if (category.attr('data-encode') === 'true') htmlEncode = true
       category.after(categoriesChart())
     }
-    return $.root().html()
+    if (htmlEncode) {
+      return $.root().html().replace(/&amp;#/g, '&#')
+    } else {
+      return $.root().html()
+    }
   } else {
     return locals
   }
