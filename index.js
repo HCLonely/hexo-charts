@@ -32,7 +32,7 @@ hexo.extend.filter.register('after_render:html', function (locals) {
   }
 }, 15)
 
-function postsChart() {
+function postsChart () {
   const startDate = moment().subtract(1, 'years').startOf('month')
   const endDate = moment().endOf('month')
 
@@ -104,7 +104,7 @@ function postsChart() {
     </script>`
 }
 
-function tagsChart(dataLength = 10) {
+function tagsChart (dataLength = 10) {
   const tagArr = []
   hexo.locals.get('tags').map(function (tag) {
     tagArr.push({ name: tag.name, value: tag.length })
@@ -173,7 +173,7 @@ function tagsChart(dataLength = 10) {
     </script>`
 }
 
-function categoriesChart() {
+function categoriesChart () {
   const categoryArr = []
   hexo.locals.get('categories').map(function (category) {
     categoryArr.push({ name: category.name, value: category.length })
