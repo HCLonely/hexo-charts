@@ -10,15 +10,15 @@ hexo.extend.filter.register('after_render:html', function (locals) {
 
   if (post.length > 0 || tag.length > 0 || category.length > 0) {
     $('head').after('<style type="text/css">#posts-chart,#categories-chart,#tags-chart{width: 100%;height: 300px;margin: 0.5rem auto;padding: 0.5rem;}</style><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>')
-    if (post.length > 0) {
+    if (post.length > 0 && $('#postsChart').length === 0) {
       if (post.attr('data-encode') === 'true') htmlEncode = true
       post.after(postsChart())
     }
-    if (tag.length > 0) {
+    if (tag.length > 0 && $('#tagsChart').length === 0) {
       if (tag.attr('data-encode') === 'true') htmlEncode = true
       tag.after(tagsChart(tag.attr('data-length')))
     }
-    if (category.length > 0) {
+    if (category.length > 0 && $('#categoriesChart').length === 0) {
       if (category.attr('data-encode') === 'true') htmlEncode = true
       category.after(categoriesChart())
     }
@@ -30,9 +30,9 @@ hexo.extend.filter.register('after_render:html', function (locals) {
   } else {
     return locals
   }
-})
+}, 15)
 
-function postsChart () {
+function postsChart() {
   const startDate = moment().subtract(1, 'years').startOf('month')
   const endDate = moment().endOf('month')
 
@@ -54,7 +54,7 @@ function postsChart () {
   const monthValueArr = JSON.stringify([...monthMap.values()])
 
   return `
-  <script>
+  <script id="postsChart">
     let postsChart = echarts.init(document.getElementById('posts-chart'));
     let postsOption = {
         title: {
@@ -104,7 +104,7 @@ function postsChart () {
     </script>`
 }
 
-function tagsChart (dataLength = 10) {
+function tagsChart(dataLength = 10) {
   const tagArr = []
   hexo.locals.get('tags').map(function (tag) {
     tagArr.push({ name: tag.name, value: tag.length })
@@ -122,7 +122,7 @@ function tagsChart (dataLength = 10) {
   const tagCountArrJson = JSON.stringify(tagCountArr)
 
   return `
-  <script>
+  <script id="tagsChart">
     let tagsChart = echarts.init(document.getElementById('tags-chart'));
     let tagsOption = {
         title: {
@@ -173,7 +173,7 @@ function tagsChart (dataLength = 10) {
     </script>`
 }
 
-function categoriesChart () {
+function categoriesChart() {
   const categoryArr = []
   hexo.locals.get('categories').map(function (category) {
     categoryArr.push({ name: category.name, value: category.length })
@@ -182,7 +182,7 @@ function categoriesChart () {
   const categoryArrJson = JSON.stringify(categoryArr)
 
   return `
-  <script>
+  <script id="categoriesChart">
     let categoriesChart = echarts.init(document.getElementById('categories-chart'));
     let categoriesOption = {
         title: {
