@@ -1,6 +1,6 @@
 {
   "name": "hexo-charts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Render hexo poats, categories, and tags into charts.",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "plugin",
     "chart"
   ],
-  "author": "HCLonely",
+  "author": "HCLonely <h1606051253@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/HCLonely/hexo-chart/issues"
