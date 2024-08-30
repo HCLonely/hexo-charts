@@ -5,7 +5,7 @@
 ## 安装
 
 ```shell
-npm install hexo-chart -S
+npm install hexo-charts -S
 ```
 
 ## 使用
